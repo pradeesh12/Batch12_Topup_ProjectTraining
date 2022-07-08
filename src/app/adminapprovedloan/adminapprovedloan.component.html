@@ -1,0 +1,50 @@
+<app-admin-nav></app-admin-nav>
+<div class="whole" [ngStyle]="{backgroundImage:'url(https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)'}">
+<div class="container" id ="image">
+    <form class="search">
+    <input type="text" [(ngModel)]="id" name="seach" placeholder="Enter loan id to search">
+    <button (click)="searchCustomer(id)" class="btn btn-info" style="margin-left: 10px">Search</button>
+</form>
+<table div class="col-md-9" id="blue">
+    <tbody>
+       <tr *ngFor="let i of users" class="time">
+    <div *ngIf="i.apprej!='' && i.loanId!=0">
+        <div class="detailsofcustomer">
+          <div class="first">
+           <td>ApplicantName: {{ i.applicantName }}</td>
+              <td>Applicant Id: {{ i.loanId }}</td>   
+              <td>ApplicantType: {{ i.loantype }}</td>
+         </div>
+         <div>
+              <td>ApplicantAddress: {{ i.applicantAddress }}</td>
+              <td>ApplicantMobile: {{ i.applicantMobile }}</td> 
+              <td>ApplicantEmail: {{ i.applicantEmail }}</td>  
+        </div>
+        <div>
+              <td>ApplicantAadharrNo: {{ i.applicantAadharr }}</td>
+              <td>ApplicantPanNo: {{ i.applicantPan }}</td>
+              <td>ApplicantSalary: {{ i.applicantSalary }}</td>
+        </div>
+        <div>
+              <td>AmountRequired: {{ i.loanAmountRequired }}</td>
+              <td>RepaymentMonths:{{i.repaymentMonths}}</td>
+          <!--    <td>App/Rej:{{ i.apprej }}</td> -->
+        </div> 
+   <br>  
+    <div class="buttons">          
+        <td ><button (click)="deleteCustomer(i.loanId)" class="btn btn-danger">Delete</button>
+            <button (click)="customerDetails(i.loanId)" class="btn btn-info" style="margin-left: 10px">View</button>
+            <button (click)="editCustomer(i.loanId)" class="btn btn-info" style="margin-left: 10px"> Edit</button>
+        <container-element [ngSwitch]="i.apprej" class="apprejbutton">
+            <label *ngSwitchCase="'app'"> <button class="btn btn-mini btn-primary" value="Approved">Approved</button></label>
+            <label *ngSwitchCase="'rej'"><button class="btn btn-mini btn-danger">Rejected</button></label>
+         </container-element>
+         </td>
+    </div> 
+</div>
+</div>
+        </tr>
+    </tbody>
+  </table>
+</div>
+</div>
