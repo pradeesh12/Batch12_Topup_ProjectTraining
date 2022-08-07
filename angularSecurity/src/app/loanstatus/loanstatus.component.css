@@ -1,0 +1,30 @@
+.input-group {
+    margin-top: 4%;
+}
+
+.detailsofcustomer {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-self: auto;
+    text-indent: 50px;
+    justify-content: center;
+    background-color: white;
+    padding: 5%;
+    font-size: larger;
+    width: 150%;
+    margin-top: 3px;
+    margin-right: 20px;
+}
+
+.first,
+.secound {
+    display: flexbox;
+    
+
+}
+
+.whole {
+    padding: 20%;
+    height: 90%;
+}
