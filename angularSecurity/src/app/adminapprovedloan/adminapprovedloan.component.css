@@ -1,0 +1,35 @@
+.container
+{
+    background-color: rgb(255, 255, 255);
+    image-rendering: auto;
+    padding: 20px;
+    width: 930px;
+}
+.apprejbutton
+{
+    margin-left: 10px;
+}
+.detailsofcustomer
+{
+    background-color: rgb(187, 172, 125);
+    padding: 10%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 3px;
+}
+.whole 
+{
+  
+    padding: 3%;
+}
+.row
+{
+    margin-top: 7px;
+}
+
+#blue
+{
+    margin-left: 6%;
+    margin-top: 2%;
+}
