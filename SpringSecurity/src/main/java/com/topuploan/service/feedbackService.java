@@ -5,22 +5,25 @@ package com.topuploan.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.topuploan.dao.feedbackRepository;
-import com.topuploan.entity.feedbackModule;
+import com.sun.istack.logging.Logger;
+import com.topuploan.dao.FeedBackRepository;
+import com.topuploan.entity.FeedBackModule;
 
 import java.util.List;
 
 @Service
-public class feedbackService {
-
+public class FeedBackService {
+	
+	private static Logger log = Logger.getLogger(FeedBackService.class);
 
     @Autowired
-    private feedbackRepository repository ;
+    private FeedBackRepository repository ;
 
-    public feedbackModule saveDetails(feedbackModule module){
+    public FeedBackModule saveDetails(FeedBackModule module){
+    	log.info("Feedback added successfully");
         return repository.save(module);
     }
-    public List<feedbackModule> getAll (){
+    public List<FeedBackModule> getAll (){
         return repository.findAll();
     }
 }

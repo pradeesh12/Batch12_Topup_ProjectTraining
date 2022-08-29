@@ -3,7 +3,7 @@ package com.topuploan.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.topuploan.entity.feedbackModule;
+import com.topuploan.entity.FeedBackModule;
 
-public interface feedbackRepository extends JpaRepository<feedbackModule,Long> {
+public interface FeedBackRepository extends JpaRepository<FeedBackModule,Integer> {
 }

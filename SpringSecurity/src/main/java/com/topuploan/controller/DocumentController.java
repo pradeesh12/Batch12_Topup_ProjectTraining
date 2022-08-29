@@ -1,6 +1,7 @@
 package com.topuploan.controller;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,7 +24,6 @@ import com.topuploan.dao.DocumentRepository;
 import com.topuploan.dao.FileUploadResponse;
 import com.topuploan.entity.DocumentModel;
 
-
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class DocumentController {
@@ -36,7 +36,7 @@ public class DocumentController {
 	}
 
 	@PostMapping("/uploadDocument")
-	@CrossOrigin(origins = "*")
+//	@CrossOrigin(origins = "*")
 	public FileUploadResponse saveDocument(@RequestParam("file") MultipartFile file,
 			@RequestParam("documentType") String documentType) throws IOException {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -63,5 +63,10 @@ public class DocumentController {
 				.header(HttpHeaders.CONTENT_DISPOSITION, "inline;fileName="+doc.getDocumentName())
 				.body(doc.getDocumentUpload());
 
+	}
+	@GetMapping("/getDoc/{id}")
+	Optional<DocumentModel> fileDetails(@PathVariable long id)
+	{
+		return docRepo.findById(id);
 	}
 }

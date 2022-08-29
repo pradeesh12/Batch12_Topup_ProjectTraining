@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 
+import com.sun.istack.logging.Logger;
+import com.topuploan.SpringSecurityApplication;
 import com.topuploan.dao.LoanRepository;
 import com.topuploan.entity.LoanModel;
 
@@ -14,6 +16,7 @@ import com.topuploan.entity.LoanModel;
 
 @Service
 public class AdminService {
+	private static Logger log = Logger.getLogger(AdminService.class);
 	@Autowired
 	LoanRepository loanrepo;
 	
@@ -22,10 +25,12 @@ public class AdminService {
 	}
 	public String deleteCustomer(Long id) {
 		loanrepo.deleteById(id);
+		log.info("Customer with id= "+id+" is deleted successfully");
 		return "deleted";
 	}
 
 	public LoanModel getCustomer(Long id) {
+		log.info("Customer with id= "+id+" is retrieved successfully");
 		return loanrepo.getByLoanId(id);
 	}
 	public LoanModel editCustomer(LoanModel t, Long id) {
@@ -42,6 +47,7 @@ public class AdminService {
 			t.setApplicantSalary(t.getApplicantSalary());
 			t.setLoanAmountRequired(t.getLoanAmountRequired());
 			t.setRepaymentMonths(t.getRepaymentMonths());
+			log.info("Customer with id= "+id+" is edited successfully");
 			loanrepo.save(t);
 		}
 		return t;

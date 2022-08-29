@@ -14,15 +14,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.sun.istack.logging.Logger;
 import com.topuploan.dao.UserDao;
-import com.topuploan.entity.JwtRequest;
-import com.topuploan.entity.JwtResponse;
 import com.topuploan.entity.User;
+import com.topuploan.exception.InvalidCredentialsFoundException;
+import com.topuploan.model.JwtRequest;
+import com.topuploan.model.JwtResponse;
 import com.topuploan.util.JwtUtil;
 
 @Service
 public class JwtService implements UserDetailsService {
 
+	private static Logger log = Logger.getLogger(JwtService.class);
     @Autowired
     private JwtUtil jwtUtil;
 
@@ -39,7 +42,7 @@ public class JwtService implements UserDetailsService {
 
         UserDetails userDetails = loadUserByUsername(userName);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
-
+        log.info("Login successfully");
         User user = userDao.findById(userName).get();
         return new JwtResponse(user, newGeneratedToken);
     }
@@ -71,9 +74,11 @@ public class JwtService implements UserDetailsService {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userName, userPassword));
         } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
+        	log.info("User name not found");
+            throw new UsernameNotFoundException("USER_DISABLED");
         } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+        	log.info("INVALID_CREDENTIALS");
+            throw new InvalidCredentialsFoundException("INVALID_CREDENTIALS");
         }
     }
 }

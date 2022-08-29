@@ -10,7 +10,7 @@ public class Role
 	private String roleName;
 	private String roleDescription;
 	public Role() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public Role(String roleName, String roleDescription) {
