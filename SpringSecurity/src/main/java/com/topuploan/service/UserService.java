@@ -55,19 +55,13 @@ public class UserService
 		adminUser.setRole(adminRoles);
 		userDao.save(adminUser);
 		
-//		User user=new User();
-//		user.setUsername("user123");
-//		user.setEmail("test123@gmail.com");
-//		user.setMobileNumber("9999999999");
-//		user.setPassword(getEncodedPassword("user@123"));
-//		Set<Role> userRoles=new HashSet<>();
-//		userRoles.add(userRole);
-//		user.setRole(userRoles);
-//		userDao.save(user);
-		
+
 	}
 	  public String getEncodedPassword(String password) {
 	        return passwordEncoder.encode(password);
 	    }
+	
+		
+	
 	
 }

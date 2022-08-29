@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.topuploan.entity.JwtRequest;
-import com.topuploan.entity.JwtResponse;
+import com.topuploan.model.JwtRequest;
+import com.topuploan.model.JwtResponse;
 import com.topuploan.service.JwtService;
 
 @RestController

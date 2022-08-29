@@ -22,7 +22,7 @@ import com.topuploan.service.AdminService;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
-
+    
 	@Autowired
 	AdminService calladminser;
 	
